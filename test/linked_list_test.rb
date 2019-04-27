@@ -40,4 +40,37 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "list test", list.to_string
   end
+
+  def test_it_can_prepend_a_node
+    list = LinkedList.new
+
+    list.append("list")
+
+    assert_equal "list", list.to_string
+
+    list.append("test")
+
+    assert_equal "list test", list.to_string
+
+    list.prepend("haha")
+
+    assert_equal "haha list test", list.to_string
+    assert_equal 3, list.count
+  end
+
+  def test_it_can_insert_a_node
+    list = LinkedList.new
+
+    list.append("list")
+
+    assert_equal "list", list.to_string
+
+    list.append("test")
+
+    assert_equal "list test", list.to_string
+
+    list.insert(1, "haha")
+
+    assert_equal "list haha test", list.to_string
+  end
 end

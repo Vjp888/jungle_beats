@@ -5,5 +5,4 @@ class Node
     @data = sound
     @next_node = nil
   end
-
 end
