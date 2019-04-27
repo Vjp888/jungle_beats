@@ -73,4 +73,55 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "list haha test", list.to_string
   end
+
+  def test_it_can_find_a_range_of_nodes
+    list = LinkedList.new
+    list.append("list")
+    list.append("test")
+    list.append("haha")
+    list.append("harpy")
+    list.append("party")
+
+    test_1 = "haha"
+    test_2 = "haha harpy party"
+    test_3 = "haha harpy"
+
+    assert_equal "list test haha harpy party", list.to_string
+
+    assert_equal list.find(2, 1), test_1
+    assert_equal list.find(2, 3), test_2
+    assert_equal list.find(2, 2), test_3
+  end
+
+  def test_it_can_check_if_a_node_contains_string
+    list = LinkedList.new
+    list.append("list")
+    list.append("test")
+    list.append("haha")
+    list.append("harpy")
+    list.append("party")
+
+    assert_equal true, list.includes?("haha")
+    assert_equal false, list.includes?("hahhah")
+  end
+
+  def test_it_can_pop_last_node
+    list = LinkedList.new
+    list.append("list")
+    list.append("test")
+    list.append("haha")
+    list.append("harpy")
+    list.append("party")
+
+    test_1 = "list test haha harpy"
+    test_2 = "list test haha"
+
+    list.pop
+    assert_equal 4, list.count
+    assert_equal test_1, list.to_string
+
+    list.pop
+    assert_equal 3, list.count
+    assert_equal test_2, list.to_string
+  end
 end
