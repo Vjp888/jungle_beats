@@ -6,6 +6,29 @@ class LinkedList
     @head = nil
   end
 
+  def insert(location, sound)
+    node = Node.new(sound)
+    node_count = 0
+    counter = @head
+    while node_count != (location - 1)
+      node_count += 1
+      counter = counter.next_node
+    end
+    node.next_node = counter.next_node
+    counter.next_node = node
+  end
+
+  def prepend(sound)
+    if @head
+      node = @head
+      @head = Node.new(sound)
+      @head.next_node = node
+    else
+      @head = Node.new(sound)
+    end
+    sound
+  end
+
   def append(sound)
     if @head
       node = @head
