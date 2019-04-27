@@ -6,6 +6,47 @@ class LinkedList
     @head = nil
   end
 
+  def pop
+    node = @head
+    if node.next_node == nil
+      @head = nil
+    else
+      while node.next_node.next_node
+        node = node.next_node
+      end
+    end
+    node.next_node = nil
+  end
+
+  def includes?(word)
+    check = false
+    node = @head
+    while node
+      if node.data == word
+        check = true
+        break
+      else
+        node = node.next_node
+      end
+    end
+    check
+  end
+
+  def find(start, length)
+    node_count = 0
+    node = @head
+    while node_count != (start)
+      node_count += 1
+      node = node.next_node
+    end
+    chain = ""
+    length.times do
+      chain << node.data + " "
+      node = node.next_node
+    end
+    chain.strip
+  end
+
   def insert(location, sound)
     node = Node.new(sound)
     node_count = 0
